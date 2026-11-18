@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="edu.uic.cs342.poker.controller.WelcomeController"
-      alignment="CENTER" spacing="20" styleClass="welcome-root">
-    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
-    <Label fx:id="welcomeLabel" text="welcome to project 1" styleClass="welcome-label"/>
-    <Button text="Start" onAction="#handleStartButton"/>
-</VBox>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.uic.cs342.poker.controller.WelcomeController"
+            styleClass="screen">
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="10">
+            <Label text="Three Card Poker" styleClass="app-name"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <CheckBox fx:id="reduceMotionBox" text="Reduce motion" onAction="#handleReduceMotion"/>
+            <Button fx:id="themeButton" onAction="#handleTheme" styleClass="secondary"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="18">
+            <HBox fx:id="heroCards" alignment="CENTER" spacing="10"/>
+            <Label text="Three Card Poker" styleClass="welcome-title"/>
+            <Label text="Two players vs. the dealer  ·  Ante and Pair Plus bets from $5 to $25"
+                   styleClass="welcome-subtitle"/>
+            <VBox alignment="CENTER" spacing="10" maxWidth="260">
+                <Button fx:id="startButton" text="Start Game" onAction="#handleStart"
+                        styleClass="primary" maxWidth="Infinity" defaultButton="true"/>
+                <Button text="How to Play" onAction="#handleRules"
+                        styleClass="secondary" maxWidth="Infinity"/>
+                <Button text="Exit" onAction="#handleExit"
+                        styleClass="secondary" maxWidth="Infinity"/>
+            </VBox>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" styleClass="footer">
+            <Label text="Keyboard: Tab moves between buttons, Enter or Space presses the focused one."
+                   styleClass="hint"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,258 @@
+/* Light theme. Colors are defined once here and used everywhere.
+   dark.css only changes these color values. */
+.root {
+    -bg: #f4f6f8;
+    -surface: #ffffff;
+    -bar: #e9ecef;
+    -ink: #1f2328;
+    -muted: #5c636a;
+    -line: #c4cad0;
+    -accent: #2457c5;
+    -accent-text: #ffffff;
+    -felt: #e7efe9;
+    -ok: #17663a;
+    -ok-bg: #e5f4ea;
+    -err: #b42318;
+    -err-bg: #fdeceb;
+    -info-bg: #e8effc;
+    -focus: #e0a800;
+    -card-bg: #ffffff;
+    -card-back: #6b7480;
+    -card-red: #c0262d;
+
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: -bg;
+}
+
+.screen { -fx-background-color: -bg; }
+.label { -fx-text-fill: -ink; }
+
+/* ---------- bars ---------- */
+.top-bar {
+    -fx-background-color: -bar;
+    -fx-border-color: transparent transparent -line transparent;
+    -fx-padding: 10 24 10 24;
+}
+.footer { -fx-padding: 12 24 16 24; }
+.app-name { -fx-font-size: 17px; -fx-font-weight: bold; }
+.app-sub { -fx-text-fill: -muted; -fx-font-size: 15px; }
+.hint { -fx-text-fill: -muted; -fx-font-size: 13px; }
+
+/* ---------- buttons ---------- */
+.button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 18 8 18;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+.button.primary {
+    -fx-background-color: -accent;
+    -fx-text-fill: -accent-text;
+}
+.button.secondary {
+    -fx-background-color: -surface;
+    -fx-text-fill: -ink;
+    -fx-border-color: -ink;
+    -fx-border-width: 1.5;
+}
+.button:hover { -fx-opacity: 0.88; }
+.button:disabled {
+    -fx-opacity: 1;
+    -fx-background-color: -bar;
+    -fx-text-fill: -muted;
+    -fx-border-color: -line;
+    -fx-border-style: segments(5, 4);
+    -fx-border-width: 1.5;
+}
+/* visible keyboard focus on every control */
+.button:focused, .text-field:focused, .check-box:focused, .overlay:focused {
+    -fx-border-color: -focus;
+    -fx-border-width: 3;
+    -fx-border-style: solid;
+}
+.check-box { -fx-text-fill: -ink; }
+.check-box .text { -fx-fill: -ink; }
+
+/* ---------- welcome ---------- */
+.welcome-title { -fx-font-size: 44px; -fx-font-weight: bold; }
+.welcome-subtitle { -fx-font-size: 16px; -fx-text-fill: -muted; }
+
+/* ---------- phase tracker + status ---------- */
+.round-label { -fx-text-fill: -muted; -fx-font-size: 12px; -fx-font-family: "Consolas", monospace; }
+.step {
+    -fx-padding: 4 11 4 11;
+    -fx-background-radius: 99;
+    -fx-border-radius: 99;
+    -fx-border-color: -line;
+    -fx-border-style: segments(3, 3);
+    -fx-text-fill: -muted;
+    -fx-font-size: 12px;
+}
+.step-done { -fx-border-color: -ink; -fx-border-style: solid; -fx-text-fill: -ink; }
+.step-current {
+    -fx-background-color: -accent;
+    -fx-border-color: -accent;
+    -fx-border-style: solid;
+    -fx-text-fill: -accent-text;
+    -fx-font-weight: bold;
+}
+
+.status {
+    -fx-padding: 10 14 10 14;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-width: 1.5;
+}
+.status-info { -fx-background-color: -info-bg; -fx-border-color: -accent; }
+.status-ok { -fx-background-color: -ok-bg; -fx-border-color: -ok; }
+.status-err { -fx-background-color: -err-bg; -fx-border-color: -err; }
+.status-tag {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 9 3 9;
+    -fx-background-radius: 99;
+    -fx-border-radius: 99;
+    -fx-border-width: 1.5;
+    -fx-border-color: -ink;
+}
+.status-info .status-tag { -fx-text-fill: -accent; -fx-border-color: -accent; }
+.status-ok .status-tag { -fx-text-fill: -ok; -fx-border-color: -ok; }
+.status-err .status-tag { -fx-text-fill: -err; -fx-border-color: -err; }
+.status-text { -fx-font-size: 14px; -fx-font-weight: bold; }
+.banner-text { -fx-font-size: 16px; -fx-font-weight: bold; }
+
+/* ---------- dealer + players ---------- */
+.dealer-area {
+    -fx-background-color: -felt;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16 12 16;
+}
+.section-label { -fx-text-fill: -muted; -fx-font-size: 12px; -fx-font-weight: bold; }
+.dealer-info { -fx-font-size: 13px; -fx-text-fill: -muted; }
+.dealer-summary { -fx-font-size: 15px; -fx-font-weight: bold; }
+
+.player-panel {
+    -fx-background-color: -surface;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: -line;
+    -fx-border-width: 1.5;
+    -fx-padding: 16;
+}
+.player-panel.active { -fx-border-color: -accent; -fx-border-width: 3; }
+.player-name { -fx-font-size: 18px; -fx-font-weight: bold; }
+/* Part 1 revision: total winnings made easier to see */
+.total-label { -fx-font-size: 14px; -fx-text-fill: -ink; }
+.total-amount { -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: -ink; }
+.hand-name { -fx-font-size: 15px; -fx-font-weight: bold; }
+
+.tag {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 9 3 9;
+    -fx-background-radius: 99;
+    -fx-border-radius: 99;
+    -fx-border-width: 1.5;
+}
+.tag-ok { -fx-text-fill: -ok; -fx-border-color: -ok; -fx-background-color: -ok-bg; }
+.tag-err { -fx-text-fill: -err; -fx-border-color: -err; -fx-background-color: -err-bg; }
+.tag-info { -fx-text-fill: -accent; -fx-border-color: -accent; -fx-background-color: -info-bg; }
+.tag-mute { -fx-text-fill: -muted; -fx-border-color: -muted; -fx-background-color: -bar; }
+
+.field-label { -fx-font-size: 12px; -fx-text-fill: -muted; }
+.field-hint { -fx-font-size: 12px; -fx-text-fill: -muted; }
+.hint-error { -fx-text-fill: -err; -fx-font-weight: bold; }
+.text-field {
+    -fx-background-color: -surface;
+    -fx-text-fill: -ink;
+    -fx-prompt-text-fill: -muted;
+    -fx-border-color: -ink;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-font-size: 15px;
+}
+.text-field:disabled { -fx-opacity: 1; -fx-background-color: -bar; -fx-border-color: -line; -fx-text-fill: -muted; }
+.text-field.field-error { -fx-border-color: -err; -fx-border-width: 2.5; }
+/* Play amount is shown, not typed, so it looks read-only */
+.readonly-amount {
+    -fx-background-color: -bar;
+    -fx-background-radius: 4;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 15px;
+}
+
+.text-ok { -fx-text-fill: -ok; }
+.text-err { -fx-text-fill: -err; }
+
+/* ---------- cards ---------- */
+.card {
+    -fx-min-width: 64; -fx-pref-width: 64; -fx-max-width: 64;
+    -fx-min-height: 90; -fx-pref-height: 90; -fx-max-height: 90;
+    -fx-background-color: -card-bg;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: -ink;
+    -fx-border-width: 1.5;
+}
+.card-face { -fx-padding: 4 7 4 7; -fx-spacing: 2; }
+.card-rank { -fx-font-size: 17px; -fx-font-weight: bold; }
+.card-suit { -fx-font-size: 30px; -fx-padding: 0 0 0 10; }
+.card-red .label { -fx-text-fill: -card-red; }
+.card-black .label { -fx-text-fill: #1f2328; }
+.card-back { -fx-background-color: -card-back; }
+.card-back-mark { -fx-text-fill: #ffffff; -fx-font-size: 22px; -fx-font-weight: bold; }
+.card-slot {
+    -fx-background-color: transparent;
+    -fx-border-color: -line;
+    -fx-border-style: segments(5, 4);
+}
+.card-small {
+    -fx-min-width: 44; -fx-pref-width: 44; -fx-max-width: 44;
+    -fx-min-height: 62; -fx-pref-height: 62; -fx-max-height: 62;
+}
+.card-small .card-rank { -fx-font-size: 13px; }
+.card-small .card-suit { -fx-font-size: 20px; -fx-padding: 0 0 0 6; }
+
+/* ---------- result popup ---------- */
+.overlay { -fx-background-color: rgba(20, 22, 26, 0.55); -fx-cursor: hand; }
+.overlay-hint { -fx-text-fill: #ffffff; -fx-font-size: 15px; -fx-font-weight: bold; }
+.result-box {
+    -fx-padding: 16;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-width: 2;
+    -fx-alignment: center;
+}
+.result-win { -fx-background-color: -ok-bg; -fx-border-color: -ok; }
+.result-lose { -fx-background-color: -err-bg; -fx-border-color: -err; }
+.result-push { -fx-background-color: -info-bg; -fx-border-color: -accent; }
+.result-fold { -fx-background-color: -bar; -fx-border-color: -muted; }
+.result-who { -fx-font-size: 13px; -fx-text-fill: -muted; }
+.result-title { -fx-font-size: 20px; -fx-font-weight: bold; }
+.result-win .result-title { -fx-text-fill: -ok; }
+.result-lose .result-title { -fx-text-fill: -err; }
+.result-push .result-title { -fx-text-fill: -accent; }
+.result-detail { -fx-font-size: 13px; -fx-text-alignment: center; }
+
+/* ---------- results screen ---------- */
+.results-title { -fx-font-size: 26px; -fx-font-weight: bold; }
+.results-table {
+    -fx-background-color: -surface;
+    -fx-border-color: -line;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+.cell { -fx-padding: 11 14 11 14; -fx-font-size: 14px; }
+.cell-header { -fx-background-color: -bar; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: -muted; }
+.cell-strong { -fx-font-weight: bold; }
+
+/* ---------- dialogs ---------- */
+.dialog-pane { -fx-background-color: -surface; }
+.dialog-pane .header-panel { -fx-background-color: -bar; }
+.dialog-pane .header-panel .label { -fx-font-size: 18px; -fx-font-weight: bold; }
+.dialog-pane .content.label, .dialog-pane .label { -fx-text-fill: -ink; }

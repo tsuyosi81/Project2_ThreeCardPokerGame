@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="edu.uic.cs342.poker.controller.GameController"
+           styleClass="screen">
+    <BorderPane>
+        <top>
+            <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="10">
+                <Label text="Three Card Poker" styleClass="app-name"/>
+                <Label text="· Game" styleClass="app-sub"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="themeButton" onAction="#handleTheme" styleClass="secondary"/>
+                <Button text="Rules" onAction="#handleRules" styleClass="secondary"/>
+                <Button text="Quit" onAction="#handleQuit" styleClass="secondary"/>
+            </HBox>
+        </top>
+        <center>
+            <VBox spacing="14">
+                <padding><Insets top="16" right="24" bottom="8" left="24"/></padding>
+                <HBox alignment="CENTER_LEFT" spacing="6">
+                    <Label fx:id="roundLabel" styleClass="round-label"/>
+                    <Label fx:id="step0" text="1 Bet" styleClass="step"/>
+                    <Label fx:id="step1" text="2 Deal" styleClass="step"/>
+                    <Label fx:id="step2" text="3 Decide" styleClass="step"/>
+                    <Label fx:id="step3" text="4 Reveal" styleClass="step"/>
+                    <Label fx:id="step4" text="5 Payout" styleClass="step"/>
+                </HBox>
+                <HBox fx:id="statusBar" styleClass="status" alignment="CENTER_LEFT" spacing="12">
+                    <Label fx:id="statusTag" styleClass="status-tag"/>
+                    <Label fx:id="statusText" styleClass="status-text" wrapText="true" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <VBox styleClass="dealer-area" alignment="CENTER" spacing="8">
+                    <Label text="DEALER" styleClass="section-label"/>
+                    <HBox fx:id="dealerCards" alignment="CENTER" spacing="10"/>
+                    <Label fx:id="dealerInfo" styleClass="dealer-info"/>
+                </VBox>
+                <HBox spacing="20">
+                <VBox fx:id="p1Panel" styleClass="player-panel" spacing="12" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="2">
+                            <Label text="Player 1" styleClass="player-name"/>
+                            <HBox alignment="BASELINE_LEFT" spacing="8">
+                                <Label text="Total winnings" styleClass="total-label"/>
+                                <Label fx:id="p1Total" styleClass="total-amount"/>
+                            </HBox>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="p1Tag" styleClass="tag"/>
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <HBox fx:id="p1Cards" spacing="10"/>
+                        <Label fx:id="p1HandName" styleClass="hand-name"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Ante" styleClass="field-label"/>
+                            <TextField fx:id="p1Ante" promptText="\$5–$25"/>
+                            <Label fx:id="p1AnteHint" text="\$5–$25" styleClass="field-hint"/>
+                        </VBox>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Pair Plus (optional)" styleClass="field-label"/>
+                            <TextField fx:id="p1PP" promptText="blank = no bet"/>
+                            <Label fx:id="p1PPHint" text="Optional · leave blank to skip" styleClass="field-hint"/>
+                        </VBox>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Play" styleClass="field-label"/>
+                            <Label fx:id="p1PlayAmount" text="—" styleClass="readonly-amount" maxWidth="Infinity"/>
+                            <Label text="Equals Ante" styleClass="field-hint"/>
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button fx:id="p1Play" text="Play" onAction="#handleP1Play" styleClass="primary"/>
+                        <Button fx:id="p1Fold" text="Fold" onAction="#handleP1Fold" styleClass="secondary"/>
+                    </HBox>
+                </VBox>
+                <VBox fx:id="p2Panel" styleClass="player-panel" spacing="12" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="2">
+                            <Label text="Player 2" styleClass="player-name"/>
+                            <HBox alignment="BASELINE_LEFT" spacing="8">
+                                <Label text="Total winnings" styleClass="total-label"/>
+                                <Label fx:id="p2Total" styleClass="total-amount"/>
+                            </HBox>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="p2Tag" styleClass="tag"/>
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <HBox fx:id="p2Cards" spacing="10"/>
+                        <Label fx:id="p2HandName" styleClass="hand-name"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Ante" styleClass="field-label"/>
+                            <TextField fx:id="p2Ante" promptText="\$5–$25"/>
+                            <Label fx:id="p2AnteHint" text="\$5–$25" styleClass="field-hint"/>
+                        </VBox>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Pair Plus (optional)" styleClass="field-label"/>
+                            <TextField fx:id="p2PP" promptText="blank = no bet"/>
+                            <Label fx:id="p2PPHint" text="Optional · leave blank to skip" styleClass="field-hint"/>
+                        </VBox>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Play" styleClass="field-label"/>
+                            <Label fx:id="p2PlayAmount" text="—" styleClass="readonly-amount" maxWidth="Infinity"/>
+                            <Label text="Equals Ante" styleClass="field-hint"/>
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button fx:id="p2Play" text="Play" onAction="#handleP2Play" styleClass="primary"/>
+                        <Button fx:id="p2Fold" text="Fold" onAction="#handleP2Fold" styleClass="secondary"/>
+                    </HBox>
+                </VBox>
+                </HBox>
+            </VBox>
+        </center>
+        <bottom>
+            <HBox styleClass="footer" alignment="CENTER_LEFT" spacing="12">
+                <Label text="Hot-seat: both players share this screen and take turns." styleClass="hint"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="actionHint" styleClass="hint"/>
+                <Button fx:id="mainButton" onAction="#handleMainButton" styleClass="primary"/>
+            </HBox>
+        </bottom>
+    </BorderPane>
+
+    <!-- result popup: shown over the game, click anywhere to close -->
+    <VBox fx:id="overlay" styleClass="overlay" alignment="CENTER" spacing="16"
+          visible="false" onMouseClicked="#handleOverlayClick">
+        <HBox fx:id="overlayBoxes" alignment="CENTER" spacing="20"/>
+        <Label text="Click anywhere to continue" styleClass="overlay-hint"/>
+    </VBox>
+</StackPane>

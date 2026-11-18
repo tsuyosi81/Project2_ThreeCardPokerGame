@@ -1,0 +1,21 @@
+/* Dark theme: loaded on top of light.css and only changes the colors. */
+.root {
+    -bg: #15201b;
+    -surface: #1f2b25;
+    -bar: #263630;
+    -ink: #eef3ef;
+    -muted: #a8b5ae;
+    -line: #3e5148;
+    -accent: #e2b04a;
+    -accent-text: #1a1406;
+    -felt: #1b4a35;
+    -ok: #6fd39a;
+    -ok-bg: #173a28;
+    -err: #ff8a80;
+    -err-bg: #43201e;
+    -info-bg: #3a3220;
+    -focus: #7cc4ff;
+    -card-bg: #f7f4ea;
+    -card-back: #8a3b33;
+    -card-red: #c0262d;
+}

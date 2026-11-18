@@ -1,0 +1,169 @@
+classDiagram
+    direction TB
+
+    class Main {
+        +start(Stage) void
+        +main(String[]) void
+    }
+    class SceneManager {
+        -Stage stage
+        -Scene scene
+        -GameService game
+        -boolean darkTheme
+        -boolean reduceMotion
+        +init(Stage) void
+        +show(String fxmlName) void
+        +getGame() GameService
+        +newGame() void
+        +toggleTheme() void
+        +stylesheets() String[]
+        +setReduceMotion(boolean) void
+    }
+    class Dialogs {
+        +confirmQuit() boolean
+        +showRules() void
+    }
+    class WelcomeController {
+        -HBox heroCards
+        -Button themeButton
+        -CheckBox reduceMotionBox
+        -handleStart() void
+        -handleRules() void
+        -handleExit() void
+        -handleTheme() void
+    }
+    class GameController {
+        -GameService game
+        -boolean animating
+        -TextField[] antes
+        -TextField[] pairPlus
+        -Button mainButton
+        -VBox overlay
+        -handleMainButton() void
+        -handleP1Play() void
+        -handleP1Fold() void
+        -handleQuit() void
+        -deal() void
+        -decide(int, boolean) void
+        -reveal() void
+        -updateControls() void
+        -showOverlay(VBox...) void
+    }
+    class ResultsController {
+        -GameService game
+        -GridPane table
+        -handlePlayAgain() void
+        -handleMainMenu() void
+    }
+    class CardView {
+        +front(Card) StackPane
+        +back() StackPane
+        +slot() StackPane
+        +showFace(StackPane, Card) void
+    }
+    class Animations {
+        +dealCards(List~Node~, Runnable) void
+        +flipCards(List~Node~, IntConsumer, Runnable) void
+        +pulse(Node) void
+        +fadeIn(Node) void
+    }
+    class GameService {
+        +MIN_BET int = 5
+        +MAX_BET int = 25
+        -Player[] players
+        -Dealer dealer
+        -PlayerResult[] results
+        -Phase phase
+        -int round
+        -boolean dealerQualified
+        +isValidAnte(int)$ boolean
+        +isValidPairPlus(int)$ boolean
+        +placeBets(int, int, int) void
+        +canDeal() boolean
+        +deal() void
+        +play(int) void
+        +fold(int) void
+        +revealDealer() void
+        +nextRound() void
+        +getActivePlayer() int
+        +getResult(int) PlayerResult
+    }
+    class Phase {
+        <<enumeration>>
+        BETTING
+        PLAYER1_DECIDE
+        PLAYER2_DECIDE
+        READY_TO_REVEAL
+        ROUND_OVER
+    }
+    class PlayerResult {
+        -Outcome outcome
+        -String handName
+        -int anteChange
+        -int playChange
+        -int pairPlusChange
+        +getTotalChange() int
+        +getLabel() String
+    }
+    class ThreeCardLogic {
+        +evalHand(ArrayList~Card~)$ int
+        +evalPPWinnings(ArrayList~Card~, int)$ int
+        +compareHands(ArrayList~Card~, ArrayList~Card~)$ int
+        +dealerQualifies(ArrayList~Card~)$ boolean
+        +handName(ArrayList~Card~)$ String
+    }
+    class Player {
+        -String name
+        -ArrayList~Card~ hand
+        -int anteBet
+        -int pairPlusBet
+        -int playBet
+        -int totalWinnings
+        -boolean folded
+        -boolean anteCarried
+        +addWinnings(int) void
+        +clearForNewRound() void
+    }
+    class Dealer {
+        -Deck theDeck
+        -ArrayList~Card~ dealersHand
+        +dealHand() ArrayList~Card~
+        +dealOwnHand() void
+    }
+    class Deck {
+        +newDeck() void
+        +shuffle() void
+        +reset() void
+    }
+    class Card {
+        -char suit
+        -int value
+        +getSuit() char
+        +getValue() int
+        +isRed() boolean
+    }
+    class ArrayList~Card~
+
+    Main ..> SceneManager : starts
+    SceneManager --> GameService : holds current game
+    SceneManager ..> WelcomeController : loads FXML
+    SceneManager ..> GameController : loads FXML
+    SceneManager ..> ResultsController : loads FXML
+    WelcomeController ..> Dialogs
+    GameController ..> Dialogs
+    ResultsController ..> Dialogs
+    GameController --> GameService : calls
+    ResultsController --> GameService : reads results
+    GameController ..> CardView
+    GameController ..> Animations
+    ResultsController ..> CardView
+    GameService --> "2" Player
+    GameService --> "1" Dealer
+    GameService --> "2" PlayerResult
+    GameService --> Phase
+    GameService ..> ThreeCardLogic : uses rules
+    Dealer --> "1" Deck
+    Deck --|> ArrayList~Card~ : extends
+    Deck o-- "52" Card
+    Player o-- "3" Card
+    ThreeCardLogic ..> Card
